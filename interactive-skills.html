@@ -1,0 +1,121 @@
+<!-- Interactive Skills Section -->
+<section id="skills" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Skills</h2>
+            <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+        
+        <!-- Category Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-blue-600 text-white" data-category="frontend">
+                Frontend
+            </button>
+            <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300" data-category="backend">
+                Backend
+            </button>
+            <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300" data-category="ai">
+                AI/ML
+            </button>
+            <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300" data-category="languages">
+                Programming Languages
+            </button>
+            <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300" data-category="tools">
+                Tools
+            </button>
+        </div>
+        
+        <!-- Skills Grid -->
+        <div id="skillsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Skills will be dynamically inserted here -->
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const skillsData = {
+        frontend: [
+            { name: 'HTML', icon: 'fab fa-html5', color: 'text-orange-600' },
+            { name: 'CSS', icon: 'fab fa-css3-alt', color: 'text-blue-600' },
+            { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: 'text-purple-600' },
+            { name: 'JavaScript', icon: 'fab fa-js', color: 'text-yellow-500' },
+            { name: 'React', icon: 'fab fa-react', color: 'text-cyan-500' }
+        ],
+        backend: [
+            { name: 'Node.js', icon: 'fab fa-node-js', color: 'text-green-600' },
+            { name: 'Express.js', icon: 'fas fa-server', color: 'text-gray-600' },
+            { name: 'MongoDB', icon: 'fas fa-database', color: 'text-green-500' },
+            { name: 'SQLite', icon: 'fas fa-database', color: 'text-blue-500' }
+        ],
+        ai: [
+            { name: 'Python', icon: 'fab fa-python', color: 'text-blue-600' },
+            { name: 'NumPy', icon: 'fas fa-chart-line', color: 'text-indigo-600' },
+            { name: 'Pandas', icon: 'fas fa-table', color: 'text-blue-500' },
+            { name: 'Regression', icon: 'fas fa-chart-bar', color: 'text-purple-600' },
+            { name: 'Machine Learning', icon: 'fas fa-brain', color: 'text-pink-600' },
+            { name: 'Deep Learning', icon: 'fas fa-network-wired', color: 'text-red-600' },
+            { name: 'LLMs', icon: 'fas fa-robot', color: 'text-orange-600' }
+        ],
+        languages: [
+            { name: 'C++', icon: 'fas fa-code', color: 'text-blue-700' },
+            { name: 'Java', icon: 'fab fa-java', color: 'text-red-600' },
+            { name: 'Python', icon: 'fab fa-python', color: 'text-blue-600' },
+            { name: 'JavaScript', icon: 'fab fa-js', color: 'text-yellow-500' },
+            { name: 'SQL', icon: 'fas fa-database', color: 'text-orange-600' }
+        ],
+        tools: [
+            { name: 'VS Code', icon: 'fas fa-code', color: 'text-blue-600' },
+            { name: 'Git', icon: 'fab fa-git-alt', color: 'text-red-600' },
+            { name: 'GitHub', icon: 'fab fa-github', color: 'text-gray-800' }
+        ]
+    };
+
+    const skillsGrid = document.getElementById('skillsGrid');
+    const categoryButtons = document.querySelectorAll('.category-btn');
+
+    function renderSkills(category) {
+        const skills = skillsData[category];
+        
+        // Add fade out effect
+        skillsGrid.style.opacity = '0';
+        skillsGrid.style.transform = 'scale(0.95)';
+        
+        setTimeout(() => {
+            skillsGrid.innerHTML = skills.map(skill => `
+                <div class="skill-card bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 text-center">
+                    <div class="mb-4">
+                        <i class="${skill.icon} text-4xl ${skill.color}"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800">${skill.name}</h3>
+                </div>
+            `).join('');
+            
+            // Add fade in effect
+            skillsGrid.style.opacity = '1';
+            skillsGrid.style.transform = 'scale(1)';
+        }, 150);
+    }
+
+    function updateActiveButton(activeCategory) {
+        categoryButtons.forEach(btn => {
+            if (btn.dataset.category === activeCategory) {
+                btn.className = 'category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-blue-600 text-white';
+            } else {
+                btn.className = 'category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300';
+            }
+        });
+    }
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+            renderSkills(category);
+            updateActiveButton(category);
+        });
+    });
+
+    // Initialize with Frontend skills
+    renderSkills('frontend');
+});
+</script>
