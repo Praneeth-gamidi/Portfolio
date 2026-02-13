@@ -203,8 +203,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - **Portfolio**: [Live Demo](https://praneeth-gamidi.github.io/Portfolio/)
 - **GitHub**: [@Praneeth-gamidi](https://github.com/Praneeth-gamidi)
-- **LinkedIn**: [Your LinkedIn Profile]
-- **Email**: your.email@example.com
+- **LinkedIn**: (https://www.linkedin.com/in/praneeth-gamidi/)
+- **Email**: gamidinvdpraneeth@gmail.com
 
 ---
 
@@ -240,4 +240,4 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **Built with ❤️ by Praneeth Gamidi**  
-*Frontend Developer & UI/UX Enthusiast*
+*Full Stack Developer & AI/ML Enthusiast*
